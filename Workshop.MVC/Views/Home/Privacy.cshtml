@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+
+    var date = DateTime.Today.ToString("d");
+    var isToday = DateTime.Now.DayOfWeek;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<p>its @date. </p>
+
+@if(isToday == DayOfWeek.Wednesday)
+{
+    <p>its środa</p>
+}
