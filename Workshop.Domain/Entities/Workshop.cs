@@ -8,7 +8,7 @@ namespace Workshop.Domain.Entities
 {
     public class Workshop
     {
-        public required int Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -16,6 +16,6 @@ namespace Workshop.Domain.Entities
 
         public string EncodedName { get; private set; } = default!;
 
-        public void EncodeName() => EncodedName.ToLower().Replace(" ", "-");
+        public void EncodeName() => EncodedName = Name.ToLower().Replace(" ", "-");
     }
 }

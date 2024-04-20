@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Workshop.Domain.Entities;
 using Workshop.Infrastructure.Persistence;
 using Workshop.Infrastructure.Extensions;
+using Workshop.Infrastructure.Seeders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +17,12 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+
+var seeder = scope.ServiceProvider.GetRequiredService<WorkshopSeeder>();
+
+await seeder.Seed();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

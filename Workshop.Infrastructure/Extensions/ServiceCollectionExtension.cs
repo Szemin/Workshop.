@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workshop.Infrastructure.Persistence;
+using Workshop.Infrastructure.Seeders;
 
 namespace Workshop.Infrastructure.Extensions
 {
@@ -17,6 +18,8 @@ namespace Workshop.Infrastructure.Extensions
 
             services.AddDbContext<WorkshopDbContext>(options
                  => options.UseSqlServer(configuration.GetConnectionString("WorkshopConnectionString")));
+
+            services.AddScoped<WorkshopSeeder>();
         }
     }
 }
